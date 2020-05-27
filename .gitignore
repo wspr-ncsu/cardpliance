@@ -1,0 +1,27 @@
+.idea/scopes/
+.idea/dictionaries/
+.idea/inspectionProfiles/
+.idea/libraries/
+.idea/modules/
+.idea/.name
+.idea/*.xml
+!.idea/vcs.xml
+!.idea/uiDesigner.xml
+/classes
+dist
+/SDK/*SDK
+/*.bat
+out
+build
+.DS_Store
+*~
+target/
+nativedroid/venv/*
+
+# Python cruft
+*.pyc
+*.pyo
+*.egg-info
+MANIFEST
+
+bazel-*

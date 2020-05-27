@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018. Fengguo Wei and others.
+  ~ All rights reserved. This program and the accompanying materials
+  ~ are made available under the terms of the Apache License v2.0
+  ~ which accompanies this distribution, and is available at
+  ~ https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Detailed contributors are listed in the CONTRIBUTOR.md
+  -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.arguslab.icc_implicit_action">
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".FooActivity"
+            android:label="@string/title_activity_foo">
+            <intent-filter>
+                <action android:name="amandroid.impliciticctest_action.testaction" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

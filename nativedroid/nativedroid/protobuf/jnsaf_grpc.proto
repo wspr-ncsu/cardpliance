@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package jnsaf_server;
+option java_package = "org.argus.jnsaf.server";
+
+import "nativedroid/protobuf/summary.proto";
+import "nativedroid/protobuf/taint_result.proto";
+
+message LoadAPKRequest {
+    bytes buffer = 1;
+}
+
+message LoadAPKResponse {
+    string apk_digest = 1;
+    int32 length = 2;
+}
+
+message TaintAnalysisRequest {
+    string apk_digest = 1;
+    enum Algorithm {
+        COMPONENT_BASED = 0;
+        BOTTOM_UP = 1;
+    }
+    Algorithm algo = 2;
+}
+
+message TaintAnalysisResponse {
+    taint_result.TaintResult taint_result = 1;
+}
+
+message GetSummaryRequest {
+    string apk_digest = 1;
+    string component_name = 2;
+    string signature = 3;
+    bool gen = 4;
+    int32 depth = 5;
+}
+
+message GetSummaryResponse {
+    jawa_summary.HeapSummary heap_summary = 1;
+    string taint_result = 2;
+}
+
+message RegisterICCRequest {
+    string apk_digest = 1;
+    string component_name = 2;
+    string target_component_name = 3;
+    string signature = 4;
+    bool is_source = 5;
+    repeated int32 source_args = 6;
+}
+
+message RegisterICCResponse {
+    bool status = 1;
+}
+
+message RegisterTaintRequest {
+    string apk_digest = 1;
+    string signature = 2;
+    string source_kind = 3;
+    string sink_kind = 4;
+}
+
+message RegisterTaintResponse {
+    bool status = 1;
+}
+
+service JNSaf {
+    rpc LoadAPK(stream LoadAPKRequest) returns (LoadAPKResponse) {}
+    rpc TaintAnalysis(TaintAnalysisRequest) returns (TaintAnalysisResponse) {}
+    rpc GetSummary(GetSummaryRequest) returns (GetSummaryResponse) {}
+    rpc RegisterICC(RegisterICCRequest) returns (RegisterICCResponse) {}
+    rpc RegisterTaint(RegisterTaintRequest) returns (RegisterTaintResponse) {}
+}
