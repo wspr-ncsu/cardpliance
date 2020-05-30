@@ -14,9 +14,9 @@ So far 6 PCI DSS rules are checked in Cardpliance. They are:
 5. Applications not using proper SSL to transmit Credit Card data to open network.  
 6. Applications not securely transmitting Credit Card data to other applications.  
 
-##How to run Cardpliance
+## How to run Cardpliance
 
-You can download the pre built jar file and run it using the command
+You can clone the repo and build the project using build.sbt or you can download the pre built jar file and run it using the following command
 
 java -jar cardpliance.jar t <apk directory> -a COMPONENT_BASED -mo CUSTOM_ANALYSIS -urcc <CC id file directory> -urcvc <CVC id file directory> -disp <CC displaying id file directory> -o <Output directory>
 
@@ -35,7 +35,6 @@ java -jar cardpliance.jar t APK/com.test.apk -a COMPONENT_BASED -mo CUSTOM_ANALY
 
 As you can see there are several text files that are required by Cardpliance as input. Most of the checks in Cardpliance are done by taint tracking Credit Card information provided to the application through Graphical User Interface(i.e TextFields). Therefore we need to provide Cardpliacne a list of relevant Textfield resource identifiers corresponding to input textfields that take credit card information as input. To do that we rely on an open source tool [UiRef](https://wspr.csc.ncsu.edu/uiref/). Details on how to run UiRef can be found on [this](https://github.com/wspr-ncsu/UiRef) link. UiRef outputs .XML laypouts resolving semantics of its user interfaces. Relavant Resource ID from these XML layouts can be extracted using the scripts provided in \cardpliance_scripts.
 
-java -jar argus-saf.jar t APK/com.sedevelop.dict.enjaproman.free-75.apk -mo CUSTOM_ANALYSIS -urcc IDS/CC/com.sedevelop.dict.enjaproman.free-75.txt -disp IDS/MASK/com.sedevelop.dict.enjaproman.free-75.txt
 
 ## Publication
 
