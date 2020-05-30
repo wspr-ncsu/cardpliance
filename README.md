@@ -22,13 +22,13 @@ java -jar cardpliance.jar t <apk directory> -a COMPONENT_BASED -mo CUSTOM_ANALYS
 
 Here the options are as follows:
 
--a sets the approach to COMPONENT_BASED
--mo sets the module to CUSTOM_ANALYSIS. This reads our CustomSourcesAndSinks.txt file to build the source sink list
--urcc This is the location of the .txt file that has the resource identifier of textfields that take Credit card number as input
--urcvc This is the location of the .txt file that has the resource identifier of textfields that take CVC as input
--disp This is the location of the .txt file that has the resource identifier of textfields that displays Credit card number
--o this is the ourput directory where output is generated
-
+-a sets the approach to COMPONENT_BASED. 
+-mo sets the module to CUSTOM_ANALYSIS. This reads our CustomSourcesAndSinks.txt file to build the source sink list. 
+-urcc This is the location of the .txt file that has the resource identifier of textfields that take Credit card number as input. 
+-urcvc This is the location of the .txt file that has the resource identifier of textfields that take CVC as input. 
+-disp This is the location of the .txt file that has the resource identifier of textfields that displays Credit card number. 
+-o this is the ourput directory where output is generated. 
+    
 For example
 
 java -jar cardpliance.jar t APK/com.test.apk -a COMPONENT_BASED -mo CUSTOM_ANALYSIS -urcc IDS/CC/com.cctest.txt -urcc IDS/CVC/com.cvctest.txt -disp IDS/MASK/com.disp.txt -o /output
