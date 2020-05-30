@@ -14,8 +14,28 @@ So far 6 PCI DSS rules are checked in Cardpliance. They are:
 5. Applications not using proper SSL to transmit Credit Card data to open network.  
 6. Applications not securely transmitting Credit Card data to other applications.  
 
-Most of the checks in Cardpliance are done by taint tracking Credit Card information provided to the application through Graphical User Interface(i.e TextFields). Therefore we need to provide Cardpliacne a list of relevant Textfield resource identifiers corresponding to input textfields that take credit card information as input. To do that we reply on an open source tool [UiRef](https://github.com/wspr-ncsu/UiRef)run Cardpliance we first need to provide
+##How to run Cardpliance
 
+You can download the pre built jar file and run it using the command
+
+java -jar cardpliance.jar t <apk directory> -a COMPONENT_BASED -mo CUSTOM_ANALYSIS -urcc <CC id file directory> -urcvc <CVC id file directory> -disp <CC displaying id file directory> -o <Output directory>
+
+Here the options are as follows:
+
+-a sets the approach to COMPONENT_BASED
+-mo sets the module to CUSTOM_ANALYSIS. This reads our CustomSourcesAndSinks.txt file to build the source sink list
+-urcc This is the location of the .txt file that has the resource identifier of textfields that take Credit card number as input
+-urcvc This is the location of the .txt file that has the resource identifier of textfields that take CVC as input
+-disp This is the location of the .txt file that has the resource identifier of textfields that displays Credit card number
+-o this is the ourput directory where output is generated
+
+For example
+
+java -jar cardpliance.jar t APK/com.test.apk -a COMPONENT_BASED -mo CUSTOM_ANALYSIS -urcc IDS/CC/com.cctest.txt -urcc IDS/CVC/com.cvctest.txt -disp IDS/MASK/com.disp.txt -o /output
+
+As you can see there are several text files that are required by Cardpliance as input. Most of the checks in Cardpliance are done by taint tracking Credit Card information provided to the application through Graphical User Interface(i.e TextFields). Therefore we need to provide Cardpliacne a list of relevant Textfield resource identifiers corresponding to input textfields that take credit card information as input. To do that we rely on an open source tool [UiRef](https://wspr.csc.ncsu.edu/uiref/). Details on how to run UiRef can be found on [this](https://github.com/wspr-ncsu/UiRef) link. UiRef outputs .XML laypouts resolving semantics of its user interfaces. Relavant Resource ID from these XML layouts can be extracted using the scripts provided in \cardpliance_scripts.
+
+java -jar argus-saf.jar t APK/com.sedevelop.dict.enjaproman.free-75.apk -mo CUSTOM_ANALYSIS -urcc IDS/CC/com.sedevelop.dict.enjaproman.free-75.txt -disp IDS/MASK/com.sedevelop.dict.enjaproman.free-75.txt
 
 ## Publication
 
