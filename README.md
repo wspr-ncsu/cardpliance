@@ -43,3 +43,5 @@ Full information on how Cardpliance works can be found on our academic paper tha
 Samin Yaseer Mahmud, Akhil Acharya, Benjamin Andow, William Enck, and Bradley Reaves. Cardpliance: PCI DSS Compliance of Android Applications. In Proceedings of the 29th USENIX Security Symposium (SECURITY), August 2020, Boston, MA, USA. [\[PDF\]](https://www.usenix.org/system/files/sec20fall_mahmud_prepub.pdf)
 
 ## Licence
+
+Details about the licence can be found on Licence.txt
