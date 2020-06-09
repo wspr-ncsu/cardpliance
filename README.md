@@ -44,4 +44,4 @@ Samin Yaseer Mahmud, Akhil Acharya, Benjamin Andow, William Enck, and Bradley Re
 
 ## License
 
-Details about the licence can be found on LICENSE.txt
+Details about the license can be found on LICENSE.txt
